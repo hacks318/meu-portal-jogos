@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portal de Jogos - Retro & Atuais</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f1016;
+            color: #ffffff;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #00ff88;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        p.subtitle {
+            color: #a0a0ab;
+            margin-top: 5px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1b1b22;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #2a2b36;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+        .card-img {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #2b2d42, #1b1b22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .card-tag {
+            font-size: 0.8rem;
+            background: #2a2b36;
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: #00ff88;
+            display: inline-block;
+        }
+        #player-container {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .back-btn {
+            background: #ff3366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background: #ff194d;
+        }
+        iframe {
+            width: 100%;
+            height: 550px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header-section">
+        <h1>🎮 Meu Portal Gamer</h1>
+        <p class="subtitle">Os melhores jogos retrô e atuais em um só lugar!</p>
+    </header>
+
+    <!-- ÁREA ONDE O JOGO RODA NO IFRAME -->
+    <div id="player-container">
+        <button class="back-btn" onclick="fecharJogo()">⬅ Voltar ao Catálogo</button>
+        <br>
+        <iframe id="game-frame" src=""></iframe>
+    </div>
+
+    <!-- GRADE DE JOGOS -->
+    <div class="grid" id="game-grid">
+        <!-- Jogo 1 -->
+        <div class="card" onclick="abrirJogo('https://playcanv.as/p/2O2we910/')">
+            <div class="card-img">🏎️</div>
+            <div class="card-content">
+                <div class="card-title">Corrida 3D</div>
+                <span class="card-tag">Atual / 3D</span>
+            </div>
+        </div>
+
+        <!-- Jogo 2 -->
+        <div class="card" onclick="abrirJogo('https://scratch.mit.edu/projects/embed/10128454/?autostart=false')">
+            <div class="card-img">🕹️</div>
+            <div class="card-content">
+                <div class="card-title">Retrô Arcade</div>
+                <span class="card-tag">Clássico</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function abrirJogo(url) {
+            document.getElementById('game-frame').src = url;
+            document.getElementById('player-container').style.display = 'block';
+            document.getElementById('game-grid').style.display = 'none';
+            document.getElementById('header-section').style.display = 'none';
+        }
+
+        function fecharJogo() {
+            document.getElementById('game-frame').src = '';
+            document.getElementById('player-container').style.display = 'none';
+            document.getElementById('game-grid').style.display = 'grid';
+            document.getElementById('header-section').style.display = 'block';
+        }
+    </script>
+</body>
+  </html>
+  
